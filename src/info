@@ -1,0 +1,43 @@
+
+
+Working of the Application ->
+Controller layer is where the request coming from the browser/user will be intercepted.
+Service layer is where our business logic resides.
+Now, after the service layer is done with the business logic, it will then interact with the Repository layer, if needed.
+If it wants to interact with the databases.
+Repository layer is the one which will do the talking with the db.
+Now, the response is returned back, from the db to repo to service to controller layer. And the controller
+returns the response to whoever requested it.
+
+Using annotation: @Service(for ex) makes it defined as a bean and so during runtime it will injected by the springboot as
+beans are managed by spring.
+
+ResponseStatusException is a way to handle HTTP exception directly. Using this we can communicate the exception with message
+and status code.
+
+-> With the help of @RequestMapping we can set a specific URL pattern which is getting used in the controller.
+
+-> Using JPA in SpringBoot we can directly convert a class to table. We just need to tell Spring boot that this particular class
+    we want as a table.
+
+-> JDBC: this is the connection protocol.
+
+-> With the help of hibernate, part of the Java Persistence API (JPA), we can create tables in db with just using
+@Entity annotations over the class which we want to create as a db structure.
+In the application.properties file, we can give the type of operation we need to do in the sql query. Like, this 'spring.jpa.hibernate.ddl-auto=update'
+means do update operation.
+
+-> With defining the @GeneratedValue, we don't need to worry about the primary key generation type. So, if we are using AUTO, we dont
+have to worry about if the Id is getting used in the PostGre or MySQL db bcoz then it will auto adjust the value accordingly.
+
+-> When working with entities, getters and setters are required bcoz JPA use these to set and get values of entities or models that you are creating.
+
+--> getters, setters, toString() etc., these methods can be automatically generated during compilation of the code if we are using Lombok.
+
+--> @RestControllerAdvice can intercept any exception thrown by any controller in the Application.
+
+--> DTOs are like custom objects that we have to send as a response to the people who are consuming your API. So, using DTO we can choose what we want to display in the API response.
+    So, now we can hide the information like passwords using DTO. Now, we have a lot of flexibility in the presentational layer since we have seperated model from the response
+    the user is getting. This increases the flexibility of the code and allows scalibility.
+
+--> CategoryDTO is used to encapsulate and transfer data related to categories from client to server.
